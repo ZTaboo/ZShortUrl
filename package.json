@@ -11,7 +11,8 @@
   "dependencies": {
     "@jridgewell/sourcemap-codec": "^1.4.14",
     "naive-ui": "^2.34.3",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

@@ -1,11 +1,8 @@
+<template>
+    <router-view></router-view>
+</template>
 <script setup lang="ts">
 </script>
-
-<template>
-  <div>
-      <n-button type="info">button</n-button>
-  </div>
-</template>
 
 <style scoped>
 
