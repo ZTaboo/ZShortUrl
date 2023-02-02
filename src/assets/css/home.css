@@ -1,0 +1,48 @@
+.bg-box {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.con {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.con-bg {
+    margin: auto;
+    height: 82px;
+    width: 790px;
+    border: 1px solid rgb(220, 227, 242);
+}
+
+.content-full {
+    width: 100%;
+}
+
+.content {
+    margin: auto;
+}
+
+.content > h2 {
+    text-align: center;
+    font-weight: 400;
+    line-height: 56px;
+    margin-bottom: 32px;
+    font-size: 40px;
+}
+
+.margin {
+    margin-top: 120px;
+}
+
+@media screen and (max-width: 49.375rem) {
+    .con-bg {
+        margin: auto;
+        height: 82px;
+        width: 100%;
+        border: 1px solid rgb(220, 227, 242);
+    }
+}

@@ -1,6 +1,11 @@
-import {createRouter, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHashHistory, RouteComponent} from "vue-router";
 
-const routes: any[] = [
+interface routerCon {
+    path: string,
+    component: RouteComponent
+}
+
+const routes: routerCon[] = [
     {
         path: '/',
         component: () => import('../views/Home.vue'),
