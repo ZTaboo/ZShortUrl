@@ -13,8 +13,7 @@ func GetNewUser() *User {
 }
 
 func (u *User) Go(c *gin.Context) {
-	path := c.Param("path")
-	url, err := server.New(c).Go(path)
+	url, err := server.New(c).Param("path").Go()
 	if err != nil {
 		c.JSON(404, gin.H{
 			"code": 404,

@@ -11,14 +11,28 @@ import (
 )
 
 type SerContext struct {
-	c *gin.Context
+	c      *gin.Context
+	param  string
+	params []string
 }
 
 func (s *SerContext) New(c *gin.Context) *SerContext {
 	s.c = c
 	return s
 }
-
+func (s *SerContext) Param(key string, keys ...string) *SerContext {
+	switch len(keys) {
+	case 0:
+		s.param = s.c.Param(key)
+		break
+	default:
+		s.param = s.c.Param(key)
+		for _, item := range keys {
+			s.params = append(s.params, s.c.Param(item))
+		}
+	}
+	return s
+}
 func (s *SerContext) Bind(obj any) *SerContext {
 	if s.c == nil {
 		fmt.Println("lack *gin.Context")
@@ -33,10 +47,8 @@ func (s *SerContext) Bind(obj any) *SerContext {
 	return s
 }
 
-func (s *SerContext) Go(path string) (string, error) {
-	fmt.Println("path:", path)
-	url, err := client.Cache.Get(path)
-	fmt.Println("url:", url)
+func (s *SerContext) Go() (string, error) {
+	url, err := client.Cache.Get(s.param)
 	if err != nil {
 		return "", err
 	}
@@ -46,7 +58,6 @@ func (s *SerContext) Go(path string) (string, error) {
 func (s *SerContext) GenNewUrl(dataModel model.GenNewUrlModel) (string, error) {
 	//生成随机数
 	res := utils.RandSeq(5)
-	fmt.Println("dataModel", dataModel)
 	err := client.Cache.Set(res, []byte(dataModel.Url))
 	if err != nil {
 		fmt.Println("err:", err)
